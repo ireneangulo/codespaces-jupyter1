@@ -2,17 +2,20 @@
 import numpy as np
 def f(x):
     return x**3 + x +16
-def biseccion(a,b):     
-    if f(a)*f(b)>0:
-        print("no hay raiz en el intervalo")
-    else:
-        while abs(b-a)>0.0001:
-            c=(a+b)/2
-            if f(a)*f(c)<0:
-                b=c
-            else:
-                a=c
-        print("la raiz es",c)
+def biseccion(a,b):
+    if f(a)*f(b) >= 0:
+        print("No hay raiz en el intervalo")
+        return
+    c = a
+    while (b-a) >= 0.01:
+        c = (a+b)/2
+        if f(c) == 0.0:
+            break
+        if f(c)*f(a) < 0:
+            b = c
+        else:
+            a = c
+    print("La raiz es: ",c)
 a= float(input("ingrese el valor de a "))
 b= float(input("ingrese el valor de b "))
 biseccion(a,b)
