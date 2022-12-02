@@ -13,3 +13,8 @@ def biseccion(a,b):
             else:
                 a=c
         print("la raiz es",c)
+a= float(input("ingrese el valor de a "))
+b= float(input("ingrese el valor de b "))
+biseccion(a,b)
+
+
