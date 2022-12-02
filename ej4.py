@@ -32,3 +32,6 @@ nx.shortest_path_length(G, source='King\'s Cross', target='Waterloo')
 nx.shortest_path_length(G, source='Victoria Train Station', target='Liverpool Street Station')
 # Se obtiene la distancia más corta desde la estación St. Pancras hasta la estación King's Cross
 nx.shortest_path_length(G, source='St. Pancras', target='King\'s Cross')
+
+
+
