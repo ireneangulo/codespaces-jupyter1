@@ -26,3 +26,5 @@ tweepy
 xgboost
 yulewalker
 networkx
+heapq
+collections
