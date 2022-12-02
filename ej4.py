@@ -8,46 +8,27 @@
 #la estación King's Cross hasta la estación Waterloo,
 #la estación Victoria Train Station hasta la estación Liverpool Street Station,
 #la estación St. Pancras hasta la estación King's Cross;
-import numpy as np
+
 import networkx as nx
 import matplotlib.pyplot as plt
-#creamos el grafo
-G=nx.Graph()
-#agregamos los vertices
-G.add_node("King's Cross",tipo="estacion")
-G.add_node("Waterloo",tipo="estacion")
-G.add_node("Victoria Train Station",tipo="estacion")
-G.add_node("Liverpool Street Station",tipo="estacion")
-G.add_node("St. Pancras",tipo="estacion")
-G.add_node("1",tipo="desvio")
-G.add_node("2",tipo="desvio")
-G.add_node("3",tipo="desvio")
-G.add_node("4",tipo="desvio")
-G.add_node("5",tipo="desvio")
-G.add_node("6",tipo="desvio")
-#agregamos las aristas
-G.add_edge("King's Cross","Waterloo",peso=1)
-G.add_edge("King's Cross","Victoria Train Station",peso=1)
-G.add_edge("King's Cross","St. Pancras",peso=1)
-G.add_edge("Waterloo","1",peso=1)
-G.add_edge("Victoria Train Station","2",peso=1)
-G.add_edge("Liverpool Street Station","3",peso=1)
-G.add_edge("St. Pancras","4",peso=1)
-G.add_edge("1","5",peso=1)
-G.add_edge("2","5",peso=1)
-G.add_edge("3","5",peso=1)
-G.add_edge("4","5",peso=1)
-G.add_edge("5","6",peso=1)
-G.add_edge("6","Liverpool Street Station",peso=1)
-#dibujamos el grafo
-nx.draw(G,with_labels=True)
+# Se crea un grafo no dirigido
+G = nx.Graph()
+# Se crean los nodos
+G.add_nodes_from(['King\'s Cross', 'Waterloo', 'Victoria Train Station', 'Liverpool Street Station', 'St. Pancras', 'St. Pancras'])
+# Se crean las aristas
+G.add_edges_from([('King\'s Cross', 'Waterloo'), ('King\'s Cross', 'Victoria Train Station'), ('King\'s Cross', 'Liverpool Street Station'), ('King\'s Cross', 'St. Pancras'), ('Waterloo', 'Victoria Train Station'), ('Waterloo', 'Liverpool Street Station'), ('Waterloo', 'St. Pancras'), ('Victoria Train Station', 'Liverpool Street Station'), ('Victoria Train Station', 'St. Pancras'), ('Liverpool Street Station', 'St. Pancras')])
+# Se dibuja el grafo
+nx.draw(G, with_labels=True)
 plt.show()
-#camino mas corto desde King's Cross a Waterloo
-print("Camino mas corto desde King's Cross a Waterloo")
-print(nx.shortest_path(G,source="King's Cross",target="Waterloo"))
-#camino mas corto desde Victoria Train Station a Liverpool Street Station
-print("Camino mas corto desde Victoria Train Station a Liverpool Street Station")
-print(nx.shortest_path(G,source="Victoria Train Station",target="Liverpool Street Station"))
-#camino mas corto desde St. Pancras a King's Cross
-print("Camino mas corto desde St. Pancras a King's Cross")
-print(nx.shortest_path(G,source="St. Pancras",target="King's Cross"))
+# Se obtiene el camino más corto desde la estación King's Cross hasta la estación Waterloo
+nx.shortest_path(G, source='King\'s Cross', target='Waterloo')
+# Se obtiene el camino más corto desde la estación Victoria Train Station hasta la estación Liverpool Street Station
+nx.shortest_path(G, source='Victoria Train Station', target='Liverpool Street Station')
+# Se obtiene el camino más corto desde la estación St. Pancras hasta la estación King's Cross
+nx.shortest_path(G, source='St. Pancras', target='King\'s Cross')
+# Se obtiene la distancia más corta desde la estación King's Cross hasta la estación Waterloo
+nx.shortest_path_length(G, source='King\'s Cross', target='Waterloo')
+# Se obtiene la distancia más corta desde la estación Victoria Train Station hasta la estación Liverpool Street Station
+nx.shortest_path_length(G, source='Victoria Train Station', target='Liverpool Street Station')
+# Se obtiene la distancia más corta desde la estación St. Pancras hasta la estación King's Cross
+nx.shortest_path_length(G, source='St. Pancras', target='King\'s Cross')
