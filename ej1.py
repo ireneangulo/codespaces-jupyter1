@@ -7,17 +7,17 @@ import numpy as np
 
 
 class DecisionTree:
-    def __init__(self, depth=5, min_leaf_size=5):
+    def __init__(self, depth=3, min_leaf_size=9):
         self.depth = depth
         self.decision_boundary = 0
         self.left = None
         self.right = None
         self.min_leaf_size = min_leaf_size
         self.prediction = None
-
-    def mean_squared_error(self, labels, prediction):
+"""
+   def mean_squared_error(self, labels, prediction):
         """
-        mean_squared_error:
+"""        mean_squared_error:
         @param labels: a one dimensional numpy array
         @param prediction: a floating point value
         return value: mean_squared_error calculates the error if prediction is used to
@@ -36,11 +36,13 @@ class DecisionTree:
         ...         test_prediction))
         True
         """
+        """
         if labels.ndim != 1:
             print("Error: Input labels must be one dimensional")
 
         return np.mean((labels - prediction) ** 2)
 
+"""
     def train(self, x, y):
         """
         train:
