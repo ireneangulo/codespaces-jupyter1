@@ -25,3 +25,4 @@ texttable
 tweepy
 xgboost
 yulewalker
+networkx
