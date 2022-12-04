@@ -1,51 +1,59 @@
-#Se requiere implementar una red de ferrocarriles compuesta de estaciones de trenes y cambios de agujas (o desvíos). Contemplar las siguientes consideraciones:
-#cada vértice del grafo no dirigido tendrá un tipo (estación o desvió) y su nombre, en el caso de los desvíos el nombre es un número –estos estarán numerados de manera consecutiva–;
-#cada desvío puede tener múltiples puntos de entrada y salida;
-#se deben cargar seis estaciones de trenes y doce cambios de agujas;
-#cada cambio de aguja debe tener al menos cuatro salida o vértices adyacentes;
-#y cada estación como máximo dos salidas o llegadas y no puede haber dos estaciones co- nectadas directamente
-# encontrar el camino más corto desde:
-#la estación King's Cross hasta la estación Waterloo,
-#la estación Victoria Train Station hasta la estación Liverpool Street Station,
-#la estación St. Pancras hasta la estación King's Cross.
-import networkx as nx
-import matplotlib.pyplot as plt
+#desarrollar un algoritmo numerico iterativo que permita calcular el metodo de la biseccion f(x)
+import numpy as np
+def f(x):
+    return x**3 + x +16
+def biseccion(a,b):
+    if f(a)*f(b) >= 0:
+        print("No hay raiz en el intervalo")
+        return
+    c = a
+    while (b-a) >= 0.01:
+        c = (a+b)/2
+        if f(c) == 0.0:
+            break
+        if f(c)*f(a) < 0:
+            b = c
+        else:
+            a = c
+    print("La raiz es: ",c)
+a= float(input("ingrese el valor de a "))
+b= float(input("ingrese el valor de b "))
+biseccion(a,b)
 
-G = nx.Graph()
+#desarrollar un algoritmo numerico iterativo que permita calcular el metodo de la secante f(x)
+import numpy as np      
+def f(x):
+    return  x**3 + x +16
+def secante(x0,x1):
+    if f(x0)*f(x1)>0:
+        print("no hay raiz en el intervalo")
+    else:
+        while abs(x1-x0)>0.0001:
+            x2=x1-f(x1)*(x1-x0)/(f(x1)-f(x0))
+            x0=x1
+            x1=x2
+        print("la raiz es",x2)
+x0= float(input("ingrese el valor de x0 "))
+x1= float(input("ingrese el valor de x1 "))
+secante(x0,x1)
 
-G.add_nodes_from(['King\'s Cross', 'Waterloo', 'Victoria Train Station', 'Liverpool Street Station', 'St. Pancras', 'Euston', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'], type='station')
-G.add_nodes_from(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'], type='desvio')
-
-G.add_edges_from([('King\'s Cross', '1'), ('Waterloo', '1'), ('Waterloo', '2'), ('Victoria Train Station', '2'), ('Liverpool Street Station', '2'), ('Liverpool Street Station', '3'), ('St. Pancras', '3'), ('St. Pancras', '4'), ('Euston', '4'), ('1', '5'), ('1', '6'), ('2', '5'), ('2', '6'), ('2', '7'), ('2', '8'), ('3', '7'), ('3', '8'), ('3', '9'), ('3', '10'), ('4', '9'), ('4', '10'), ('4', '11'), ('4', '12'), ('5', '6'), ('5', '7'), ('6', '7'), ('7', '8'), ('8', '9'), ('9', '10'), ('10', '11'), ('11', '12')])
-
-print("Camino más corto entre King's Cross y Waterloo:")
-print(nx.shortest_path(G, source="King\'s Cross", target='Waterloo'))
-print("Camino más corto entre Victoria Train Station y Liverpool Street Station:")
-print(nx.shortest_path(G, source='Victoria Train Station', target='Liverpool Street Station'))
-print("Camino más corto entre St. Pancras y King's Cross:")
-print(nx.shortest_path(G, source='St. Pancras', target="King\'s Cross"))
-
-pos = nx.spring_layout(G)
-nx.draw_networkx_nodes(G, pos, nodelist=['King\'s Cross', 'Waterloo', 'Victoria Train Station', 'Liverpool Street Station', 'St. Pancras', 'Euston'], node_color='b', node_size=500, alpha=0.8)
-
-
-
-
-
-
-
+#desarrollar un algoritmo numerico iterativo que permita calcular el metodo de newton raphson f(x)
+import numpy as np
+def f(x):
+    return  x**3 + x + 16
+def df(x):
+    return 2*x
+def newton_raphson(x0):
+    if f(x0)*df(x0)>0:
+        print("no hay raiz en el intervalo")
+    else:
+        while abs(f(x0))>0.0001:
+            x1=x0-f(x0)/df(x0)
+            x0=x1
+        print("la raiz es",x1)
+x0= float(input("ingrese el valor de x0 "))
+newton_raphson(x0)
 
 
 
  
-
-
-
-
-
-
-
-
-
-
-
