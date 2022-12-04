@@ -1,5 +1,5 @@
-import heapq as heapq
-import collections as col
+import heapq
+import collections 
 
 def huffman(frecuencias):
     heap = [[frecuencia, [caracter, ""]] for caracter, frecuencia in frecuencias.items()]
@@ -16,7 +16,7 @@ def huffman(frecuencias):
 
 
 def main():
-    texto = ("Este es un texto de prueba para el algoritmo de Huffman")
+    texto = "Este es un texto de prueba para el algoritmo de Huffman"
     frecuencias = collections.Counter(texto)
     huff = huffman(frecuencias)
     print("Caracteres y su frecuencia:")
@@ -25,7 +25,7 @@ def main():
     for p in huff:
         print(p[0], ":", p[1])
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     main()
 
 
